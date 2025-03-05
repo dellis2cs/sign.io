@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
-import { Button } from "./components/ui/button";
+import { Link } from "react-router";
+import { Button } from "../shadcn/ui/button";
 import {
   HandIcon,
   LanguagesIcon,
@@ -23,39 +23,35 @@ export default function Home() {
         <div className="container mx-auto py-4 px-4 md:px-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <HandIcon className="h-8 w-8 text-black" />
-              <span className="text-2xl font-bold tracking-tight">sign.io</span>
+              <HandIcon className="h-6 w-6 text-black" />
+              <span className="text-2xl font-bold tracking-tight">Sign.io</span>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center  gap-8">
               <button
                 href="#features"
-                className="text-slate-600 hover:text-black font-medium transition-colors"
+                className="text-slate-600 hover:text-black hover:bg-gray-100 p-3 rounded-lg font-medium transition-colors duration-200"
               >
                 Features
               </button>
               <button
                 href="#how-it-works"
-                className="text-slate-600 hover:text-black font-medium transition-colors"
+                className="text-slate-600 hover:bg-gray-100 p-3 rounded-lg hover:text-black font-medium transition-colors duration-200"
               >
                 How It Works
               </button>
-              <button
-                href="#"
-                className="text-slate-600 hover:text-black font-medium transition-colors"
+              <Link
+                to="/learn"
+                className="text-slate-600 hover:bg-gray-100 p-3 rounded-lg hover:text-black font-medium transition-colors duration-200"
               >
                 Learn
-              </button>
-              <Button
-                variant="outline"
-                className="ml-2 border-slate-200 text-slate-900 hover:bg-slate-100 hover:text-black"
-              >
-                Sign In
-              </Button>
-              <Button className="bg-black hover:bg-slate-800 text-white">
-                Try Sandbox
-              </Button>
+              </Link>
+              <Link to="/sandbox">
+                <Button className="bg-black hover:scale-110 duration-200 hover:bg-black ease-in-out transition-all text-white">
+                  Try Sandbox
+                </Button>
+              </Link>
             </nav>
 
             {/* Mobile menu button */}
@@ -105,12 +101,11 @@ export default function Home() {
                 >
                   Sign In
                 </Button>
-                <Button
-                  className="w-full justify-center bg-black hover:bg-slate-800 text-white"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Try Sandbox
-                </Button>
+                <Link to="/sandbox">
+                  <Button className="w-full justify-center bg-black hover:bg-slate-800 text-white">
+                    Try Sandbox
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>
@@ -339,21 +334,14 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-white hover:bg-slate-100 text-slate-900"
+                  className="bg-white hover:scale-110 duration-200 hover:bg-white ease-in-out transition-all text-black"
                 >
                   Get Started Free <ArrowRightIcon className="ml-2 h-4 w-4" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-slate-700 text-white hover:bg-slate-800"
-                >
-                  Schedule a Demo
                 </Button>
               </div>
               <p className="text-slate-400 mt-6 flex items-center justify-center gap-2">
                 <span className="flex h-2 w-2 rounded-full bg-green-500"></span>
-                No credit card required • Free 14-day trial
+                No credit card required • Free to use
               </p>
             </div>
           </div>
@@ -428,9 +416,12 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <Link
+                    to="/sandbox"
+                    className="text-slate-600 hover:text-slate-900"
+                  >
                     Sandbox
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="#" className="text-slate-600 hover:text-slate-900">
