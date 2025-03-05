@@ -1,4 +1,4 @@
-import Camera from "../camera/Camera";
+import SignLanguageDetection from "../camera/SignLanguageDetection";
 import Header from "../header/Header";
 
 export default function Sandbox() {
@@ -10,7 +10,7 @@ export default function Sandbox() {
         <p className="mb-6">
           Use the camera below for real-time sign language recognition.
         </p>
-        <Camera />
+        <SignLanguageDetection />
       </main>
     </div>
   );
