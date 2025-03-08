@@ -7,8 +7,10 @@ export default function SignLanguageDetection() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [recognizedSign, setRecognizedSign] = useState("");
+  // A ref to store the latest recognized sign so that our drawing callback always has the current value.
+  const recognizedSignRef = useRef("");
 
-  // Helper function to process landmarks
+  // Helper function to process landmarks (same as before)
   const processLandmarks = (landmarks) => {
     const xValues = landmarks.map((point) => point.x);
     const yValues = landmarks.map((point) => point.y);
@@ -35,6 +37,7 @@ export default function SignLanguageDetection() {
       const json = await response.json();
       if (json.prediction) {
         setRecognizedSign(json.prediction);
+        recognizedSignRef.current = json.prediction;
       }
     } catch (error) {
       console.error("Error fetching prediction:", error);
@@ -48,44 +51,51 @@ export default function SignLanguageDetection() {
     });
 
     hands.setOptions({
-      maxNumHands: 1, // Use one hand for prediction; adjust if needed
+      maxNumHands: 1,
       modelComplexity: 1,
       minDetectionConfidence: 0.7,
       minTrackingConfidence: 0.5,
     });
 
     hands.onResults((results) => {
-      const canvasCtx = canvasRef.current.getContext("2d");
-      canvasRef.current.width = videoRef.current.videoWidth;
-      canvasRef.current.height = videoRef.current.videoHeight;
+      const canvas = canvasRef.current;
+      const canvasCtx = canvas.getContext("2d");
+      canvas.width = videoRef.current.videoWidth;
+      canvas.height = videoRef.current.videoHeight;
 
       canvasCtx.save();
-      // Clear the canvas and draw the video frame
-      canvasCtx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-      canvasCtx.drawImage(
-        results.image,
-        0,
-        0,
-        canvasRef.current.width,
-        canvasRef.current.height
-      );
+      // Clear and redraw the current video frame.
+      canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+      
+
+      canvasCtx.drawImage(results.image, 0, 0, canvas.width, canvas.height);
 
       if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
-        // Process the first detected hand
         const landmarks = results.multiHandLandmarks[0];
-        drawingUtils.drawConnectors(
-          canvasCtx,
-          landmarks,
-          Hands.HAND_CONNECTIONS,
-          { color: "#00FFFF", lineWidth: 5 }
-        );
-        drawingUtils.drawLandmarks(
-          canvasCtx,
-          landmarks,
-          { color: "#00FFFF", lineWidth: 2 }
-        );
 
-        // Process landmarks for prediction
+        
+
+        // Compute bounding box around the hand.
+        const xValues = landmarks.map((point) => point.x);
+        const yValues = landmarks.map((point) => point.y);
+        const minX = Math.min(...xValues) * canvas.width;
+        const minY = Math.min(...yValues) * canvas.height;
+        const maxX = Math.max(...xValues) * canvas.width;
+        const maxY = Math.max(...yValues) * canvas.height;
+
+        // Optionally, draw a bounding box (with some padding).
+        const padding = 10;
+        canvasCtx.strokeStyle = "black";
+        canvasCtx.lineWidth = 4;
+        canvasCtx.strokeRect(minX - padding, minY - padding, (maxX - minX) + 2 * padding, (maxY - minY) + 2 * padding);
+
+        // Draw the recognized sign above the bounding box.
+        canvasCtx.font = "48px Arial";
+        canvasCtx.fillStyle = "black";
+        canvasCtx.fillText(recognizedSignRef.current, minX, minY - 15);
+
+        // Process landmarks for prediction.
         const dataAux = processLandmarks(landmarks);
         predictSign(dataAux);
       }
@@ -102,7 +112,6 @@ export default function SignLanguageDetection() {
       });
       camera.start();
     }
-    // Run this effect only once
   }, []);
 
   return (
@@ -115,19 +124,6 @@ export default function SignLanguageDetection() {
         ref={canvasRef}
         className="absolute top-0 left-0 w-full h-full rounded-lg pointer-events-none"
       />
-      {/* Display recognized sign via HTML overlay */}
-      <div
-        style={{
-          position: "absolute",
-          top: "10px",
-          left: "10px",
-          fontSize: "48px",
-          color: "red",
-          fontWeight: "bold",
-        }}
-      >
-        {recognizedSign}
-      </div>
     </div>
   );
 }
