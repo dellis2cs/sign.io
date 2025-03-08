@@ -28,9 +28,9 @@ export default function Home() {
               Now in public beta
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
-              Breaking barriers through
+              Breaking Language barriers through
               <span className="relative whitespace-nowrap">
-                <span className="relative z-10"> AI sign language</span>
+                <span className="relative z-10"> AI </span>
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 418 42"
@@ -42,9 +42,9 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-slate-600 text-lg md:text-xl mx-auto max-w-2xl">
-              Instantly translate between sign language and text with our
-              advanced AI technology. Break communication barriers and connect
-              with everyone.
+              Effectively learn ASL through active learning with our advanced AI
+              technology. Break communication barriers and connect with
+              everyone.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
               <Button
