@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "../homePage/Landing";
 import Sandbox from "../sandbox/Sandbox";
-import Learn from "../learn/Learn";
+import Learn from "../Tabs/Learn";
+import HowItWorks from "../Tabs/How";
 export default function ClientRouter() {
   return (
     <BrowserRouter>
@@ -9,6 +10,8 @@ export default function ClientRouter() {
         <Route path="/" element={<Home />} />
         <Route path="/sandbox" element={<Sandbox />} />
         <Route path="/learn" element={<Learn />} />
+        <Route path="/learn" element={<Learn />} />
+        <Route path="/howitworks" element={<HowItWorks />} />
       </Routes>
     </BrowserRouter>
   );

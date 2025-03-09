@@ -42,9 +42,9 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-slate-600 text-lg md:text-xl mx-auto max-w-2xl">
-              Effectively learn ASL through active learning with our advanced AI
-              technology. Break communication barriers and connect with
-              everyone.
+              Effectively learn ASL spelling through active learning with our
+              advanced AI technology. Break communication barriers and connect
+              with everyone.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
               <Button
@@ -54,13 +54,15 @@ export default function Home() {
                 Get Started Free
                 <ArrowRightIcon className="ml-2 h-4 w-4" />
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-slate-200 text-slate-900 hover:bg-slate-100"
-              >
-                Try Demo
-              </Button>
+              <Link to="sandbox">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-slate-200 text-slate-900 hover:bg-slate-100"
+                >
+                  Try Sandbox
+                </Button>{" "}
+              </Link>
             </div>
           </div>
 

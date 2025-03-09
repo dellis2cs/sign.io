@@ -27,7 +27,7 @@ export default function Header() {
               Features
             </Link>
             <Link
-              to="/#how-it-works"
+              to="/howitworks"
               className="text-slate-600 hover:bg-gray-100 p-3 rounded-lg hover:text-black font-medium transition-colors duration-200"
             >
               How It Works
