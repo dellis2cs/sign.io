@@ -177,17 +177,17 @@ export default function Home() {
           <StepCard
             number="01"
             title="Capture"
-            description="Point your camera at sign language gestures or input text for translation."
+            description="Point your camera at any of the letters in the sign language alphabet."
           />
           <StepCard
             number="02"
             title="Process"
-            description="Our AI model analyzes the input and processes it through our neural network."
+            description="Our AI model analyzes the input and processes it through our machine learning model."
           />
           <StepCard
             number="03"
             title="Translate"
-            description="Receive accurate translations in real-time, breaking communication barriers."
+            description="Receive accurate translations in real-time, reinforcing the learning experience."
           />
         </div>
       </section>
@@ -347,9 +347,12 @@ export default function Home() {
               <h3 className="font-semibold text-slate-900 mb-4">Resources</h3>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <Link
+                    to="howitworks"
+                    className="text-slate-600 hover:text-slate-900"
+                  >
                     Documentation
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="#" className="text-slate-600 hover:text-slate-900">

@@ -346,9 +346,9 @@ export default function HowItWorks() {
             <h3 className="text-2xl font-bold mb-6">Model Performance</h3>
             <div className="grid md:grid-cols-3 gap-8">
               <PerformanceCard
-                metric="95%"
+                metric="97%"
                 title="Accuracy"
-                description="Our model achieves 95% accuracy on ASL letter recognition across different users and conditions."
+                description="Our model achieves 97% accuracy on ASL letter recognition across different users and conditions."
               />
               <PerformanceCard
                 metric="<100ms"
