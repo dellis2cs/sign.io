@@ -15,7 +15,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <div className="min-h-screen bg-white text-neutral-900">
       {/* Navigation */}
       <Header />
 
@@ -23,11 +23,11 @@ export default function Home() {
       <section className="container mx-auto px-4 md:px-6 py-16 md:py-24 lg:py-32">
         <div className="flex flex-col items-center text-center">
           <div className="space-y-6 max-w-3xl">
-            <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-slate-100 text-slate-800 mb-4">
+            <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-slate-100 text-neutral-800 mb-4">
               <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2"></span>
               Now in public beta
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl text-black leading-tight font-semibold tracking-tight">
               Breaking Language barriers through
               <span className="relative whitespace-nowrap">
                 <span className="relative z-10"> AI </span>
@@ -41,7 +41,7 @@ export default function Home() {
                 </svg>
               </span>
             </h1>
-            <p className="text-slate-600 text-lg md:text-xl mx-auto max-w-2xl">
+            <p className="text-neutral-600 text-lg md:text-xl mx-auto  max-w-2xl">
               Effectively learn ASL spelling through active learning with our
               advanced AI technology. Break communication barriers and connect
               with everyone.
@@ -58,7 +58,7 @@ export default function Home() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-slate-200 text-slate-900 hover:bg-slate-100"
+                  className="border-slate-200 text-neutral-900 hover:bg-slate-100"
                 >
                   Try Sandbox
                 </Button>{" "}
@@ -89,7 +89,7 @@ export default function Home() {
                     <div className="h-2 w-2 rounded-full bg-green-500"></div>
                     <p className="text-sm font-medium">Live Translation</p>
                   </div>
-                  <p className="text-sm text-slate-700">
+                  <p className="text-sm text-neutral-700">
                     AI-powered sign language recognition in action. Try it
                     yourself in our sandbox.
                   </p>
@@ -100,7 +100,7 @@ export default function Home() {
 
           {/* Logos */}
           <div className="mt-16 border-t border-slate-200 pt-8 w-full">
-            <p className="text-sm text-slate-500 mb-6 text-center">
+            <p className="text-sm text-neutral-500 mb-6 text-center">
               Trusted by innovative organizations worldwide
             </p>
             <div className="flex flex-wrap justify-center gap-x-12 gap-y-8 opacity-70">
@@ -112,7 +112,7 @@ export default function Home() {
                 "UNESCO",
               ].map((name) => (
                 <div key={name} className="flex items-center">
-                  <span className="text-slate-400 font-semibold">{name}</span>
+                  <span className="text-neutral-400 font-semibold">{name}</span>
                 </div>
               ))}
             </div>
@@ -124,13 +124,13 @@ export default function Home() {
       <section id="features" className="bg-slate-50 py-20 md:py-32">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-slate-200 text-slate-800 mb-4">
+            <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-slate-200 text-neutral-800 mb-4">
               <span>Features</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               Everything you need to communicate effectively
             </h2>
-            <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="mt-4 text-lg text-neutral-600 max-w-2xl mx-auto">
               Our AI-powered platform makes sign language translation accessible
               to everyone, anywhere.
             </p>
@@ -150,7 +150,7 @@ export default function Home() {
             <FeatureCard
               icon={<SmartphoneIcon className="h-10 w-10" />}
               title="Mobile Accessibility"
-              description="Use sign.io on any device with a camera for on-the-go communication."
+              description="Use Signa on any device with a camera for on-the-go communication."
             />
           </div>
         </div>
@@ -162,13 +162,13 @@ export default function Home() {
         className="container mx-auto px-4 md:px-6 py-20 md:py-32"
       >
         <div className="text-center mb-16">
-          <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-slate-200 text-slate-800 mb-4">
+          <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-slate-200 text-neutral-800 mb-4">
             <span>How It Works</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
             Simple, powerful, and effective
           </h2>
-          <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-neutral-600 max-w-2xl mx-auto">
             Our three-step process makes communication seamless and accessible.
           </p>
         </div>
@@ -196,21 +196,21 @@ export default function Home() {
       <section className="bg-slate-50 py-20 md:py-32 border-y border-slate-200">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-slate-200 text-slate-800 mb-4">
+            <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-slate-200 text-neutral-800 mb-4">
               <span>Testimonials</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               Loved by users worldwide
             </h2>
-            <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-              See what our community has to say about how sign.io has
+            <p className="mt-4 text-lg text-neutral-600 max-w-2xl mx-auto">
+              See what our community has to say about how Signa has
               transformed their communication.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             <TestimonialCard
-              quote="sign.io has completely changed how I communicate with my deaf colleagues. It's intuitive and accurate."
+              quote="Signa has completely changed how I communicate with my deaf colleagues. It's intuitive and accurate."
               author="Sarah Johnson"
               role="Project Manager"
             />
@@ -233,15 +233,15 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto bg-black rounded-2xl overflow-hidden shadow-xl">
             <div className="p-8 md:p-12 lg:p-16 text-center">
-              <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-slate-800 text-slate-200 mb-6">
+              <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-slate-800 text-neutral-200 mb-6">
                 <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2"></span>
                 Get Started Today
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
                 Ready to break communication barriers?
               </h2>
-              <p className="text-slate-300 text-lg max-w-2xl mx-auto mb-8">
-                Join thousands of users who are already using sign.io to
+              <p className="text-neutral-300 text-lg max-w-2xl mx-auto mb-8">
+                Join thousands of users who are already using Signa to
                 communicate effectively across sign language barriers.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -252,7 +252,7 @@ export default function Home() {
                   Get Started Free <ArrowRightIcon className="ml-2 h-4 w-4" />
                 </Button>
               </div>
-              <p className="text-slate-400 mt-6 flex items-center justify-center gap-2">
+              <p className="text-neutral-400 mt-6 flex items-center justify-center gap-2">
                 <span className="flex h-2 w-2 rounded-full bg-green-500"></span>
                 No credit card required • Free to use
               </p>
@@ -268,14 +268,14 @@ export default function Home() {
             <div className="col-span-2 lg:col-span-1">
               <div className="flex items-center gap-2 mb-6">
                 <HandIcon className="h-6 w-6" />
-                <span className="text-xl font-bold">sign.io</span>
+                <span className="text-xl font-bold">Signa</span>
               </div>
-              <p className="text-slate-600 mb-6">
+              <p className="text-neutral-600 mb-6">
                 Breaking communication barriers through AI-powered sign language
                 translation.
               </p>
               <div className="flex gap-4">
-                <a href="#" className="text-slate-400 hover:text-slate-900">
+                <a href="#" className="text-neutral-400 hover:text-neutral-900">
                   <svg
                     className="h-5 w-5"
                     fill="currentColor"
@@ -289,7 +289,7 @@ export default function Home() {
                     />
                   </svg>
                 </a>
-                <a href="#" className="text-slate-400 hover:text-slate-900">
+                <a href="#" className="text-neutral-400 hover:text-neutral-900">
                   <svg
                     className="h-5 w-5"
                     fill="currentColor"
@@ -299,7 +299,7 @@ export default function Home() {
                     <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                   </svg>
                 </a>
-                <a href="#" className="text-slate-400 hover:text-slate-900">
+                <a href="#" className="text-neutral-400 hover:text-neutral-900">
                   <svg
                     className="h-5 w-5"
                     fill="currentColor"
@@ -316,114 +316,106 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <h3 className="font-semibold text-slate-900 mb-4">Product</h3>
+              <h3 className="font-semibold text-neutral-900 mb-4">Product</h3>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <a href="#" className="text-neutral-600 hover:text-neutral-900">
                     Features
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <a href="#" className="text-neutral-600 hover:text-neutral-900">
                     Pricing
                   </a>
                 </li>
                 <li>
                   <Link
                     to="/sandbox"
-                    className="text-slate-600 hover:text-slate-900"
+                    className="text-neutral-600 hover:text-neutral-900"
                   >
                     Sandbox
                   </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <a href="#" className="text-neutral-600 hover:text-neutral-900">
                     Roadmap
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold text-slate-900 mb-4">Resources</h3>
+              <h3 className="font-semibold text-neutral-900 mb-4">Resources</h3>
               <ul className="space-y-3">
                 <li>
                   <Link
                     to="howitworks"
-                    className="text-slate-600 hover:text-slate-900"
+                    className="text-neutral-600 hover:text-neutral-900"
                   >
                     Documentation
                   </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <a href="#" className="text-neutral-600 hover:text-neutral-900">
                     Tutorials
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <a href="#" className="text-neutral-600 hover:text-neutral-900">
                     Blog
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <a href="#" className="text-neutral-600 hover:text-neutral-900">
                     Support
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold text-slate-900 mb-4">Company</h3>
+              <h3 className="font-semibold text-neutral-900 mb-4">Company</h3>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <a href="#" className="text-neutral-600 hover:text-neutral-900">
                     About
                   </a>
                 </li>
+                
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <a href="#" className="text-neutral-600 hover:text-neutral-900">
                     Contact
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
-                    Press
-                  </a>
-                </li>
+                
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold text-slate-900 mb-4">Legal</h3>
+              <h3 className="font-semibold text-neutral-900 mb-4">Legal</h3>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <a href="#" className="text-neutral-600 hover:text-neutral-900">
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <a href="#" className="text-neutral-600 hover:text-neutral-900">
                     Terms of Service
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <a href="#" className="text-neutral-600 hover:text-neutral-900">
                     Cookie Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-slate-600 hover:text-slate-900">
+                  <a href="#" className="text-neutral-600 hover:text-neutral-900">
                     GDPR
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="pt-8 border-t border-slate-200 text-center text-slate-500 text-sm">
-            <p>© {new Date().getFullYear()} sign.io. All rights reserved.</p>
+          <div className="pt-8 border-t border-slate-200 text-center text-neutral-500 text-sm">
+            <p>© {new Date().getFullYear()} Signa. All rights reserved.</p>
           </div>
         </div>
       </footer>
@@ -435,12 +427,12 @@ export default function Home() {
 function FeatureCard({ icon, title, description }) {
   return (
     <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200 group">
-      <div className="bg-slate-100 p-3 rounded-lg w-fit mb-5 text-slate-800 group-hover:bg-slate-900 group-hover:text-white transition-colors duration-200">
+      <div className="bg-slate-100 p-3 rounded-lg w-fit mb-5 text-neutral-800 group-hover:bg-slate-900 group-hover:text-white transition-colors duration-200">
         {icon}
       </div>
       <h3 className="text-xl font-semibold mb-3">{title}</h3>
-      <p className="text-slate-600">{description}</p>
-      <div className="mt-4 flex items-center text-sm font-medium text-slate-900">
+      <p className="text-neutral-600">{description}</p>
+      <div className="mt-4 flex items-center text-sm font-medium text-neutral-900">
         <span>Learn more</span>
         <ChevronRightIcon className="ml-1 h-4 w-4" />
       </div>
@@ -452,15 +444,15 @@ function FeatureCard({ icon, title, description }) {
 function StepCard({ number, title, description }) {
   return (
     <div className="relative bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200">
-      <div className="text-7xl font-bold text-slate-100 absolute -top-6 -left-2">
+      <div className="text-7xl font-bold text-neutral-100 absolute -top-6 -left-2">
         {number}
       </div>
       <div className="relative z-10 pt-4">
-        <div className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-slate-100 text-slate-800 mb-4">
+        <div className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-slate-100 text-neutral-800 mb-4">
           Step {number}
         </div>
         <h3 className="text-xl font-semibold mb-3">{title}</h3>
-        <p className="text-slate-600">{description}</p>
+        <p className="text-neutral-600">{description}</p>
       </div>
     </div>
   );
@@ -477,14 +469,14 @@ function TestimonialCard({ quote, author, role }) {
           </svg>
         ))}
       </div>
-      <p className="text-slate-700 mb-6 italic">"{quote}"</p>
+      <p className="text-neutral-700 mb-6 italic">"{quote}"</p>
       <div className="flex items-center">
-        <div className="h-10 w-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 font-medium">
+        <div className="h-10 w-10 rounded-full bg-slate-200 flex items-center justify-center text-neutral-500 font-medium">
           {author.charAt(0)}
         </div>
         <div className="ml-3">
-          <p className="font-medium text-slate-900">{author}</p>
-          <p className="text-sm text-slate-500">{role}</p>
+          <p className="font-medium text-neutral-900">{author}</p>
+          <p className="text-sm text-neutral-500">{role}</p>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <HandIcon className="h-6 w-6 text-black" />
             <Link to="/" className="text-2xl font-bold tracking-tight">
-              Sign.io
+            Signa
             </Link>
           </div>
           {/* Desktop Navigation */}

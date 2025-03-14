@@ -477,9 +477,7 @@ export default function HowItWorks() {
                 <h4 className="font-semibold mb-2">Similar Hand Shapes</h4>
                 <p className="text-slate-600">
                   Some ASL letters have very similar hand shapes (like 'A' and
-                  'S'). We addressed this by engineering features that
-                  specifically highlight the subtle differences between these
-                  letters.
+                  'S'). We addressed this by computing the angle between different points on the hand, to more accurately classify these letters.
                 </p>
               </div>
             </div>
@@ -504,9 +502,7 @@ export default function HowItWorks() {
                 <h4 className="font-semibold mb-2">Dynamic Gestures</h4>
                 <p className="text-slate-600">
                   Some ASL letters require motion (like 'J' and 'Z'). We
-                  implemented a temporal feature extraction approach that
-                  captures the movement patterns characteristic of these dynamic
-                  signs.
+                  precisely capture the hand position needed for these gestures allowing the model to classify these letter just as it would the static ones.
                 </p>
               </div>
             </div>
