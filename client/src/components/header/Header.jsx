@@ -9,12 +9,12 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-slate-200">
-      <div className="container mx-auto py-4 px-4 md:px-6">
+    <header className="sticky top-0 z-50 bg-white border-b border-slate-200">
+      <div className="container mx-auto py-3 px-4 md:px-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <HandIcon className="h-6 w-6 text-black" />
-            <Link to="/" className="text-2xl font-bold tracking-tight">
+            <Link to="/" className="text-2xl font-semibold tracking-tight">
             Signa
             </Link>
           </div>
@@ -39,7 +39,7 @@ export default function Header() {
               Learn
             </Link>
             <Link to="/sandbox">
-              <Button className="bg-black hover:scale-110 duration-200 hover:bg-black transition-all text-white">
+              <Button className="bg-blue-100 text-[#087fe7] hover:scale-110 duration-200 hover:bg-blue-100 transition-all ">
                 Try Sandbox
               </Button>
             </Link>
