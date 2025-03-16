@@ -7,10 +7,10 @@ export default function SignLanguageDetection() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [recognizedSign, setRecognizedSign] = useState("");
-  // A ref to store the latest recognized sign so that our drawing callback always has the current value.
+  // Ref to store the latest recognized sign for drawing callback
   const recognizedSignRef = useRef("");
 
-    // Helper function to compute an angle (in degrees) given three points (each with x, y)
+  // Helper function to compute an angle (in degrees) given three points
   const computeAngle = (a, b, c) => {
     const ba = { x: a.x - b.x, y: a.y - b.y };
     const bc = { x: c.x - b.x, y: c.y - b.y };
@@ -20,10 +20,10 @@ export default function SignLanguageDetection() {
     let cosineAngle = dot / (normBA * normBC);
     cosineAngle = Math.min(1, Math.max(-1, cosineAngle)); // Clamp to [-1,1]
     const angleRad = Math.acos(cosineAngle);
-    const angleDeg = angleRad * (180 / Math.PI);
-    return angleDeg;
+    return angleRad * (180 / Math.PI);
   };
-  // Helper function to process landmarks (same as before)
+
+  // Process landmarks to compute normalized coordinates (42 features)
   const processLandmarks = (landmarks) => {
     const xValues = landmarks.map((point) => point.x);
     const yValues = landmarks.map((point) => point.y);
@@ -37,14 +37,12 @@ export default function SignLanguageDetection() {
     return processed;
   };
 
-  // Function to send processed landmarks to the backend for prediction
+  // Send processed landmarks to the backend for prediction
   const predictSign = async (dataAux) => {
     try {
       const response = await fetch("http://localhost:5001/predict", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ landmarks: dataAux })
       });
       const json = await response.json();
@@ -64,14 +62,12 @@ export default function SignLanguageDetection() {
     });
 
     hands.setOptions({
-
       maxNumHands: 1,
       modelComplexity: 1,
-      minDetectionConfidence: 0.3, // Lower detection threshold to match Python
-      minTrackingConfidence: 0.5,  // You can keep this if needed; in static mode it may be ignored.
+      minDetectionConfidence: 0.3,
+      minTrackingConfidence: 0.5,
     });
     
-
     hands.onResults((results) => {
       const canvas = canvasRef.current;
       const canvasCtx = canvas.getContext("2d");
@@ -85,7 +81,7 @@ export default function SignLanguageDetection() {
       if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
         const landmarks = results.multiHandLandmarks[0];
     
-        // Draw bounding box (optional)
+        // Draw a bounding box around the hand (optional)
         const xValues = landmarks.map((point) => point.x);
         const yValues = landmarks.map((point) => point.y);
         const minX = Math.min(...xValues) * canvas.width;
@@ -95,26 +91,47 @@ export default function SignLanguageDetection() {
         const padding = 10;
         canvasCtx.strokeStyle = "black";
         canvasCtx.lineWidth = 4;
-        canvasCtx.strokeRect(minX - padding, minY - padding, (maxX - minX) + 2 * padding, (maxY - minY) + 2 * padding);
+        canvasCtx.strokeRect(
+          minX - padding,
+          minY - padding,
+          (maxX - minX) + 2 * padding,
+          (maxY - minY) + 2 * padding
+        );
     
         // Draw recognized sign text
         canvasCtx.font = "48px Arial";
         canvasCtx.fillStyle = "black";
         canvasCtx.fillText(recognizedSignRef.current, minX, minY - 15);
     
-        // Process landmarks for prediction
+        // Process landmarks: get 42 normalized coordinate features
         const dataAux = processLandmarks(landmarks);
-        // Compute an extra feature (angle) using, for example, landmarks 1, 0, and 2.
-        // Adjust indices as per your training pipeline.
-        const angleFeature = computeAngle(landmarks[1], landmarks[0], landmarks[2]);
-        dataAux.push(angleFeature); // Now dataAux will have 43 features
     
+        // Now compute the additional 9 angle features in the same order as training:
+        const angleIndex1 = computeAngle(landmarks[5], landmarks[6], landmarks[7]);
+        const angleIndex2 = computeAngle(landmarks[6], landmarks[7], landmarks[8]);
+        const angleMiddle1 = computeAngle(landmarks[9], landmarks[10], landmarks[11]);
+        const angleMiddle2 = computeAngle(landmarks[10], landmarks[11], landmarks[12]);
+        const angleRing1 = computeAngle(landmarks[13], landmarks[14], landmarks[15]);
+        const angleRing2 = computeAngle(landmarks[14], landmarks[15], landmarks[16]);
+        const anglePinky1 = computeAngle(landmarks[17], landmarks[18], landmarks[19]);
+        const anglePinky2 = computeAngle(landmarks[18], landmarks[19], landmarks[20]);
+        const angleThumb = computeAngle(landmarks[1], landmarks[2], landmarks[3]);
+    
+        // Append the 9 angle features (total features = 42 + 9 = 51)
+        dataAux.push(
+          angleIndex1, angleIndex2,
+          angleMiddle1, angleMiddle2,
+          angleRing1, angleRing2,
+          anglePinky1, anglePinky2,
+          angleThumb
+        );
+    
+        // Send the processed 51-feature vector for prediction
         predictSign(dataAux);
       }
       canvasCtx.restore();
     });
     
-
     if (videoRef.current) {
       const camera = new Camera(videoRef.current, {
         onFrame: async () => {

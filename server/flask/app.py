@@ -12,7 +12,12 @@ model_dict = pickle.load(open('../model/model.p', 'rb'))
 model = model_dict['model']
 
 # Map numeric labels to sign characters
-labels = {0: 'A', 1: 'B', 2: 'L',3:'C',4:'D',5:'E'}
+labels = {
+    0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H',
+    8: 'I', 9: 'J', 10: 'K', 11: 'L', 12: 'M', 13: 'N', 14: 'O', 15: 'P',
+    16: 'Q', 17: 'R', 18: 'S', 19: 'T', 20: 'U', 21: 'V', 22: 'W', 23: 'X',
+    24: 'Y', 25: 'Z'
+}
 
 @app.route('/predict', methods=['POST'])
 def predict():

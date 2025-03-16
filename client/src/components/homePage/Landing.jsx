@@ -7,13 +7,10 @@ import { Button } from "../shadcn/ui/button"
 import { HandIcon, LanguagesIcon, SmartphoneIcon, ArrowRightIcon, ChevronRightIcon } from "lucide-react"
 
 export default function Home() {
-
-
   useEffect(() => {
-    window.history.scrollRestoration = "manual";
-    window.scrollTo(0, 0);
-  }, []);
-  
+    window.history.scrollRestoration = "manual"
+    window.scrollTo(0, 0)
+  }, [])
 
   const { scrollY } = useScroll()
   const heroRef = useRef(null)
@@ -30,7 +27,6 @@ export default function Home() {
 
   // Parallax effect for hero section
   const heroY = useTransform(scrollY, [0, 500], [0, 150])
-  
 
   // Floating animation for the hero image
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -102,9 +98,107 @@ export default function Home() {
         {/* Hero Section */}
         <motion.section
           ref={heroRef}
-          className="container mx-auto px-4 md:px-6 py-16 md:py-24 lg:py-32"
-          style={{ y: heroY}}
+          className="container relative mx-auto px-4 md:px-6 py-16 md:py-24 lg:py-32"
+          style={{ y: heroY }}
         >
+          {/* Background Shapes */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Animated circles */}
+            <motion.div
+              className="absolute top-20 right-[10%] w-64 h-64 rounded-full bg-blue-100/30 blur-xl"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.5, 0.3],
+                rotate: [0, 15, 0],
+              }}
+              transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute bottom-40 left-[5%] w-72 h-72 rounded-full bg-blue-50/40 blur-xl"
+              animate={{
+                scale: [1.2, 1, 1.2],
+                opacity: [0.2, 0.4, 0.2],
+                rotate: [0, -10, 0],
+              }}
+              transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 1 }}
+            />
+
+            {/* Geometric shapes */}
+            <motion.div
+              className="absolute top-[30%] left-[15%] w-16 h-16 rotate-45 border-2 border-blue-200/30"
+              animate={{
+                rotate: [45, 90, 45],
+                y: [0, 20, 0],
+                opacity: [0.4, 0.6, 0.4],
+              }}
+              transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute top-[20%] right-[25%] w-12 h-12 rounded-full border-2 border-blue-200/30"
+              animate={{
+                scale: [1, 1.2, 1],
+                y: [0, -15, 0],
+                opacity: [0.3, 0.5, 0.3],
+              }}
+              transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 2 }}
+            />
+            <motion.div
+              className="absolute bottom-[35%] right-[10%] w-20 h-20 rotate-12 border-2 border-blue-200/30"
+              animate={{
+                rotate: [12, -12, 12],
+                x: [0, 15, 0],
+                opacity: [0.3, 0.5, 0.3],
+              }}
+              transition={{ duration: 18, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 1 }}
+            />
+
+            {/* Dotted pattern */}
+            <div className="absolute inset-0 opacity-20">
+              <div className="grid grid-cols-12 h-full">
+                {Array.from({ length: 120 }).map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="w-1 h-1 rounded-full bg-blue-300/50 m-8"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: [0, 0.8, 0],
+                      scale: [0.8, 1.2, 0.8],
+                    }}
+                    transition={{
+                      duration: Math.random() * 5 + 5,
+                      delay: Math.random() * 5,
+                      repeat: Number.POSITIVE_INFINITY,
+                      repeatType: "reverse",
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Wavy lines */}
+            <svg
+              className="absolute bottom-0 left-0 w-full opacity-10"
+              viewBox="0 0 1440 320"
+              preserveAspectRatio="none"
+            >
+              <motion.path
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{
+                  pathLength: 1,
+                  opacity: 0.3,
+                  d: [
+                    "M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,186.7C672,203,768,181,864,154.7C960,128,1056,96,1152,96C1248,96,1344,128,1392,144L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z",
+                    "M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z",
+                    "M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,186.7C672,203,768,181,864,154.7C960,128,1056,96,1152,96C1248,96,1344,128,1392,144L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z",
+                  ],
+                }}
+                transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                fill="#3b82f6"
+                strokeWidth="2"
+                stroke="#3b82f6"
+              />
+            </svg>
+          </div>
           <motion.div
             className="flex flex-col items-center text-center"
             variants={containerVariants}
@@ -125,23 +219,29 @@ export default function Home() {
                 variants={itemVariants}
               >
                 Breaking Language barriers through
-                <motion.span
-                  className="relative whitespace-nowrap"
+                <motion.div
+                  className="relative inline-block whitespace-nowrap"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
                   <motion.span
-                    className="relative z-10 text-black"
-                    
-                    transition={{ duration: 5}}
+                    className="relative z-10 text-blue-600 ml-2"
+                    animate={{
+                      color: ["#2563eb", "#3b82f6", "#60a5fa", "#3b82f6", "#2563eb"],
+                      textShadow: [
+                        "0 0 0px rgba(37, 99, 235, 0)",
+                        "0 0 15px rgba(37, 99, 235, 0.5)",
+                        "0 0 0px rgba(37, 99, 235, 0)",
+                      ],
+                    }}
+                    transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY }}
                   >
-                    {" "}
-                    AI{" "}
+                    AI
                   </motion.span>
                   <motion.svg
                     aria-hidden="true"
                     viewBox="0 0 418 42"
-                    className="absolute left-0 top-3/4 h-[0.6em] w-full fill-neutral-200"
+                    className="absolute left-0 top-3/4 h-[0.6em] w-full fill-blue-100"
                     preserveAspectRatio="none"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
@@ -149,7 +249,7 @@ export default function Home() {
                   >
                     <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z"></path>
                   </motion.svg>
-                </motion.span>
+                </motion.div>
               </motion.h1>
               <motion.p className="text-[#0006] text-lg md:text-xl mx-auto max-w-2xl" variants={itemVariants}>
                 Effectively learn ASL spelling through active learning with our advanced AI technology. Break
@@ -159,10 +259,7 @@ export default function Home() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button size="lg" className="bg-blue-500 hover:bg-blue-600 transition-all duration-150 text-white">
                     Get Started Free
-                    <motion.span
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5}}
-                    >
+                    <motion.span animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5 }}>
                       <ArrowRightIcon className="ml-2 h-4 w-4" />
                     </motion.span>
                   </Button>
@@ -201,14 +298,56 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="pt-8">
-                  <motion.img
-                    src="/placeholder.svg?height=500&width=800"
-                    alt="AI Sign Language Demo"
-                    className="object-cover w-full h-full"
-                    initial={{ filter: "blur(10px)" }}
-                    animate={{ filter: "blur(0px)" }}
-                    transition={{ duration: 1 }}
-                  />
+                  <div className="relative w-full h-full">
+                    <motion.div
+                      className="absolute top-0 left-0 w-full h-full flex items-center justify-center"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0, 1, 0.8, 1] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Number.POSITIVE_INFINITY,
+                        repeatType: "reverse",
+                        repeatDelay: 5,
+                      }}
+                    >
+                      <div className="absolute w-40 h-40 rounded-full bg-blue-500/10 animate-ping" />
+                      <div className="absolute w-60 h-60 rounded-full bg-blue-500/5 animate-pulse" />
+                    </motion.div>
+                    <motion.div
+                      className="grid grid-cols-3 gap-2 w-full h-full"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 1, delay: 0.5 }}
+                    >
+                      {["A", "B", "C", "D", "E", "F", "G", "H", "I"].map((letter, index) => (
+                        <motion.div
+                          key={letter}
+                          className="relative aspect-square bg-neutral-50 rounded-lg overflow-hidden border border-neutral-200 flex items-center justify-center"
+                          initial={{ y: 50, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 0.1 * index, duration: 0.5 }}
+                          whileHover={{ scale: 1.05, boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)" }}
+                        >
+                          <motion.img
+                            src={`/placeholder.svg?height=100&width=100&text=${letter}`}
+                            alt={`ASL Letter ${letter}`}
+                            className="object-cover w-3/4 h-3/4"
+                            initial={{ filter: "blur(5px)" }}
+                            animate={{ filter: "blur(0px)" }}
+                            transition={{ duration: 0.5 }}
+                          />
+                          <motion.div
+                            className="absolute bottom-2 right-2 bg-blue-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ delay: 0.2 * index, type: "spring" }}
+                          >
+                            {letter}
+                          </motion.div>
+                        </motion.div>
+                      ))}
+                    </motion.div>
+                  </div>
                 </div>
                 <motion.div
                   className="absolute inset-0 flex items-end p-6"
@@ -217,20 +356,31 @@ export default function Home() {
                   transition={{ delay: 0.8, duration: 0.5 }}
                 >
                   <motion.div
-                    className="bg-white/90 backdrop-blur-sm px-4 py-3 rounded-lg shadow-sm border border-neutral-200 max-w-md"
-                    whileHover={{ scale: 1.02 }}
+                    className="bg-white/90 backdrop-blur-sm px-4 py-3 rounded-lg shadow-md border border-neutral-200 max-w-md"
+                    whileHover={{ scale: 1.05 }}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 1.2, duration: 0.5 }}
                   >
                     <div className="flex items-center gap-2 mb-2">
                       <motion.div
                         className="h-2 w-2 rounded-full bg-green-500"
                         animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 2 }}
+                        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
                       ></motion.div>
-                      <p className="text-sm font-medium">Live Translation</p>
+                      <p className="text-sm font-medium text-blue-600">Live Translation Active</p>
                     </div>
                     <p className="text-sm text-neutral-700">
-                      AI-powered sign language recognition in action. Try it yourself in our sandbox.
+                      <span className="font-medium">AI is detecting:</span> American Sign Language alphabet in real-time
+                      with 98% accuracy. Try it yourself in our sandbox.
                     </p>
+                    <motion.div
+                      className="mt-2 flex items-center text-xs text-blue-500 font-medium"
+                      whileHover={{ x: 5 }}
+                    >
+                      <span>Open interactive demo</span>
+                      <ChevronRightIcon className="ml-1 h-3 w-3" />
+                    </motion.div>
                   </motion.div>
                 </motion.div>
               </div>
@@ -633,7 +783,7 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              <p>© {new Date().getFullYear()} Signa. All rights reserved.</p>
+              <p>© {new Date().getFullYear()} Signa. Eugene, OR.</p>
             </motion.div>
           </div>
         </footer>
@@ -648,7 +798,6 @@ function FeatureCard({ icon, title, description, variants }) {
     <motion.div
       className="bg-white p-6 rounded-xl border border-neutral-200 shadow-sm hover:shadow-md transition-all duration-200 group"
       variants={variants}
-      
     >
       <motion.div
         className="bg-neutral-100 p-3 rounded-lg w-fit mb-5 text-neutral-800 transition-colors duration-200"
@@ -664,10 +813,7 @@ function FeatureCard({ icon, title, description, variants }) {
         transition={{ type: "spring", stiffness: 300 }}
       >
         <span>Learn more</span>
-        <motion.span
-          animate={{ x: [0, 5, 0] }}
-          transition={{ duration: 1.5 }}
-        >
+        <motion.span animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5 }}>
           <ChevronRightIcon className="ml-1 h-4 w-4" />
         </motion.span>
       </motion.div>
@@ -692,7 +838,7 @@ function StepCard({ number, title, description, variants }) {
           opacity: [0.5, 0.8, 0.5],
           scale: [1, 1.05, 1],
         }}
-        transition={{ duration: 3}}
+        transition={{ duration: 3 }}
       >
         {number}
       </motion.div>
